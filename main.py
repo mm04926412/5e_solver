@@ -23,9 +23,9 @@ def murder_probability_mass(x,hp,accuracy,damage_dice,static_damage,damage_trial
   distributions = np.array([[(1-nbinom(attacks_required,accuracy).cdf(x_i-attacks_required)) for attacks_required in attacks_required_distribution[0]] for x_i in x])*attacks_required_distribution[1] #create mixture of negative binomial distributions per damage dice result
   return np.sum(distributions,axis=1) #create the weighted sum of negative binomial distributions on accuracy per damage dice determined number of attacks required to kill
 
-x=list(range(70))
-hp = 110
-base_accuracy = 0.4375
+x=list(range(20))
+hp = 40
+base_accuracy = 0.6
 damage_dice = [6]
 static_modifier = 4
 plt.plot(x,murder_probability_mass(x,hp,base_accuracy,damage_dice,static_modifier))
